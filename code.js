@@ -74,7 +74,7 @@ let currentLang = localStorage.getItem("preferredLang") || "en";
 
 // Applique la langue au chargement
 setLanguage(currentLang);
-langIcon.setAttribute("src", currentLang === "en" ? "logos/ukflag.svg" : "logos/frflag.svg");
+langIcon.setAttribute("src", currentLang === "en" ? "ukflag.svg" : "frflag.svg");
 langIcon.setAttribute("alt", currentLang.toUpperCase());
 
 // Lors du clic, on bascule la langue
@@ -82,7 +82,7 @@ langToggle.addEventListener("click", () => {
     currentLang = currentLang === "en" ? "fr" : "en";
     localStorage.setItem("preferredLang", currentLang);
     setLanguage(currentLang);
-    langIcon.setAttribute("src", currentLang === "en" ? "logos/ukflag.svg" : "logos/frflag.svg");
+    langIcon.setAttribute("src", currentLang === "en" ? "ukflag.svg" : "frflag.svg");
     langIcon.setAttribute("alt", currentLang.toUpperCase());
 });
 
@@ -96,10 +96,10 @@ const themeIcon = document.getElementById("theme-icon");
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
-    themeIcon.setAttribute("src", "logos/moon.svg");
+    themeIcon.setAttribute("src", "moon.svg");
 } else {
     document.body.classList.remove("dark-mode");
-    themeIcon.setAttribute("src", "logos/sun_copy.svg");
+    themeIcon.setAttribute("src", "sun_copy.svg");
 }
 
 themeToggle.addEventListener("click", function () {
@@ -107,10 +107,10 @@ themeToggle.addEventListener("click", function () {
 
     // Mettre à jour l'icône
     if (document.body.classList.contains("dark-mode")) {
-        themeIcon.setAttribute("src", "logos/moon.svg");
+        themeIcon.setAttribute("src", "moon.svg");
         localStorage.setItem("theme", "dark");
     } else {
-        themeIcon.setAttribute("src", "logos/sun_copy.svg");
+        themeIcon.setAttribute("src", "sun_copy.svg");
         localStorage.setItem("theme", "light");
     }
 });
