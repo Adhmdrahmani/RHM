@@ -1,0 +1,344 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+/* =====================
+BACK TO TOP 
+===================== */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 30%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode #backToTop {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 8px white; /* effet néon blanc */
+}
+ 
+/* =====================
+PROGRESS BAR
+===================== */
+#progress-bar {
+  height: 4px;
+  background: linear-gradient(to right, blue, violet, orange);
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+
+/* =====================
+TYPEWRITER
+===================== */
+#typewriter {
+  font-family: Courier, monospace;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 600;
+  color: #121212;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 32px; 
+  display: inline-block;
+}
+
+  body.dark-mode #typewriter {
+    color: #ffffff; /* texte blanc en mode nuit */
+}
+
+/* =====================
+NAVBAR
+===================== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* CENTRAGE vertical */
+    padding: 0; /* tu peux ajuster */
+    background: transparent; /* ou ce que tu préfères */
+    z-index: 999;
+}
+
+.nav-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* un peu plus d'espace pour respirer */
+}
+
+.icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    transform-origin: left center; /* origine du scale */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.icon-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.5); /* agrandir */
+}
+.icon-link img, .theme-toggle img {
+    width: 28px;
+    height: 28px;
+    transition: filter 0.3s ease;
+}
+body.dark-mode .icon-link img {
+    filter: invert(1);
+}
+
+button.lang-toggle,button.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform-origin: left center; /* origine du scale */
+}
+
+button.lang-toggle:hover,button.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.5);
+}
+@media (max-width: 768px) {
+  main, .content {
+      margin-left: 0;
+  }
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+
+#copy-feedback {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: inline-block;  /* inline-block pour que le margin fonctionne bien */
+    color: white;          /* ou la couleur visible sur ton fond */
+    margin-left: 8px;
+    user-select: none;
+    pointer-events: none;
+}
+#copy-feedback.show {
+    opacity: 1;
+}
+  /* =====================
+  CARDS
+  ===================== */
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 60px; 
+    padding: 48px;
+    justify-content: center;
+    align-items: start;
+  }
+  
+  @media (max-width: 1024px) {
+    .projects-container {
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 28px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .projects-container {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px;
+      justify-items: center;
+    }
+  }
+  
+  .project-card {
+    overflow: hidden;
+    background:white; 
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    font-family: Courier, monospace;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 360px;
+  }
+  
+  .project-card:hover {
+    transition: background 1s ease, color 1s ease;
+    background: linear-gradient(135deg, rgb(255, 255, 255), rgb(255, 255, 255));
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.5);
+  }
+  
+  .project-card h3 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 22px;
+    color: black;
+  }
+  
+  .project-card p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 12px 0 20px;
+    color: rgba(0, 0, 0, 0.7); /* gris léger lisible */
+  }
+  /* =====================
+  MODE SOMBRE
+  ===================== */
+body.dark-mode .project-card h3 , body.dark-mode .project-card p {
+    color: #fff;
+}
+
+body.dark-mode .project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.4s ease;
+}
+
+  
+  .btn-link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  
+  .btn-link:hover {
+    color: rgba(62, 62, 62, 0.571);
+    transform: scale(1.05); 
+    border-color: currentColor;
+    border-bottom: 1.5px solid currentColor;
+  }
+  /*=====================
+  BODY
+  ===================== */
+body {
+    font-family: Courier, monospace;
+    color: white;
+    font-weight: bold; 
+    color: #121212; /* texte noir */
+    transition: background 0.5s ease, color 0.5s ease;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+body.dark-mode {
+    background: linear-gradient(135deg, black, black); 
+    color: #ffffff; /* texte blanc */
+}
+body.dark-mode a {
+    color: white; /* ou la couleur souhaitée en mode sombre */
+}
+header, section, footer {
+    padding: 17px;
+    max-width: 600px;
+    margin: auto;
+}
+a {
+    color: black; 
+    transition: color 0.3s;
+    text-decoration: underline;
+}
+/* =====================
+ABOUT ME
+===================== */
+#ABL {
+font-size: 18px;
+font-weight: 600;
+background: linear-gradient(90deg, #0099ff, #d015ff, #ff6600);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text; /* pour Firefox */
+
+}
+
+body.dark-mode #ABL {
+    color: #ffffff;
+}
+/* =====================
+LOADER
+===================== */
+/* Loader visible plein écran */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Mode jour par défaut */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+/* Spinner simple */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation du spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loader en mode sombre UNIQUEMENT */
+.dark-loader #loader {
+  background-color: #121212;
+}
+
+.dark-loader .spinner {
+  border-color: #555;
+  border-top-color: #f0f0f0;
+}
